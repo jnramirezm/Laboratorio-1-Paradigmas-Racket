@@ -1,13 +1,14 @@
 #lang racket
 
-(define(firstCard n)
+(define(fCard n)
   (define(Fx i n)
   (if (<= i(+ n 1))
           (cons i (Fx(+ i 1) n))
            null))
  (Fx 1 n))
+
 (define (first n)
-  (list(firstCard n)))
+  (list(fCard n)))
 
 (define (nCards n)
   (define (faux j k n i)
@@ -57,3 +58,10 @@
 
 (define(Mazo n)
   (append(first n)(nCards n)(n2Cards n)))
+
+(define(firstCard L)
+  (car L))
+
+(define Ejemplo(Mazo 3))
+
+(provide (all-defined-out))
