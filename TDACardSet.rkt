@@ -1,5 +1,6 @@
 #lang racket
 (require "Mazo.rkt")
+(require "TDACartas.rkt")
 (provide (all-defined-out))
 
 
@@ -33,7 +34,7 @@
   
 ; Creacion de la funcion de pertenencia del TDA cardsSet
 (define(dobble? cards)
-  cards)
+  (nextCard cards))
 
 (define Ejemplo1(cardsSet null 3 0 randomFn))
 (define E2(dobble? Ejemplo1))

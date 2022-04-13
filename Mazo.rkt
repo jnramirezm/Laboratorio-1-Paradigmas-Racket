@@ -59,9 +59,6 @@
 (define(Mazo n)
   (append(first n)(nCards n)(n2Cards n)))
 
-(define(firstCard L)
-  (car L))
-
 (define Ejemplo(Mazo 3))
 
 (provide (all-defined-out))
