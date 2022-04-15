@@ -59,6 +59,12 @@
 (define(Mazo n)
   (append(first n)(nCards n)(n2Cards n)))
 
+(define(MaxMazo L1 i)
+  (if(= i 0)
+     null
+     (cons (car L1) (MaxMazo (cdr L1) (- i 1))))
+  )
+
 (define Ejemplo(Mazo 3))
 
 (provide (all-defined-out))
