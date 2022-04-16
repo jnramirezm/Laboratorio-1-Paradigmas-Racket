@@ -65,6 +65,32 @@
      (cons (car L1) (MaxMazo (cdr L1) (- i 1))))
   )
 
-(define Ejemplo(Mazo 3))
+;;;;;;;;;;;;; Elementos Mazo ;;;;;;;;
 
+(define(Elem Mazo Elementos)
+  (if(empty? Mazo)
+     null
+     (cons (Intercambiar (car Mazo) Elementos) (Elem (cdr Mazo) Elementos) ))
+  )
+
+
+(define(Intercambiar Carta Elementos)
+  (if(empty? Carta)
+     null
+     (cons (BuscarElem Elementos (car Carta)) (Intercambiar (cdr Carta) Elementos) ))
+)
+
+ (define(BuscarElem Elementos n)
+   (define(Faux Elementos n i)
+     (if(empty? Elementos)
+        n
+        (if(= i n)
+           (car Elementos)
+           (Faux (cdr Elementos) n (+ i 1)))
+     )
+   )
+   (Faux Elementos (- n 1) 0)
+   )
+
+(define F1(Mazo 2))
 (provide (all-defined-out))
