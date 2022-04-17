@@ -92,5 +92,5 @@
    (Faux Elementos (- n 1) 0)
    )
 
-(define F1(Mazo 2))
+(define F1(Mazo 5))
 (provide (all-defined-out))
