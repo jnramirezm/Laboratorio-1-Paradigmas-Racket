@@ -1,5 +1,10 @@
 #lang racket
 
+; Descripcion:
+; Dominio:
+; Recorrido:
+; Tipo de Recursividad:
+
 (define(fCard n)
   (define(Fx i n)
   (if (<= i(+ n 1))
@@ -9,6 +14,11 @@
 
 (define (first n)
   (list(fCard n)))
+
+; Descripcion:
+; Dominio:
+; Recorrido:
+; Tipo de Recursividad:
 
 (define (nCards n)
   (define (faux j k n i)
@@ -27,6 +37,11 @@
   (if (<= k n)
       (cons (+(* j n) k 1) (f2 j (+ k 1) n))
       null))
+
+; Descripcion:
+; Dominio:
+; Recorrido:
+; Tipo de Recursividad:
 
 (define(n2Cards n)
   (define (Fn j k i n aux it)
@@ -56,8 +71,18 @@
        (cons (+(modulo (+(*(- i 1)(- k 1))(- j 1)) n)(+(* n (- k 1))2 n)) (f5 j (+ k 1) i n))
        null))
 
+; Descripcion:
+; Dominio:
+; Recorrido:
+; Tipo de Recursividad:
+
 (define(Mazo n)
   (append(first n)(nCards n)(n2Cards n)))
+
+; Descripcion:
+; Dominio:
+; Recorrido:
+; Tipo de Recursividad:
 
 (define(MaxMazo L1 i)
   (if(= i 0)
@@ -67,18 +92,31 @@
 
 ;;;;;;;;;;;;; Elementos Mazo ;;;;;;;;
 
+; Descripcion:
+; Dominio:
+; Recorrido:
+; Tipo de Recursividad:
+
 (define(Elem Mazo Elementos)
   (if(empty? Mazo)
      null
      (cons (Intercambiar (car Mazo) Elementos) (Elem (cdr Mazo) Elementos) ))
   )
 
+; Descripcion:
+; Dominio:
+; Recorrido:
+; Tipo de Recursividad:
 
 (define(Intercambiar Carta Elementos)
   (if(empty? Carta)
      null
      (cons (BuscarElem Elementos (car Carta)) (Intercambiar (cdr Carta) Elementos) ))
 )
+; Descripcion:
+; Dominio:
+; Recorrido:
+; Tipo de Recursividad:
 
  (define(BuscarElem Elementos n)
    (define(Faux Elementos n i)
