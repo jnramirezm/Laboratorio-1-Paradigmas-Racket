@@ -1,0 +1,70 @@
+#lang racket
+; *********** TDA CARTAS *********
+
+; Constructor
+
+;Descripcion: Funcion que crea un mazo
+;Dominio: Carta x Carta
+;Recorrido: Lista de cartas
+;Recursividad: No
+
+(define(Cartas L1 L2)
+  append(L1 L2))
+
+;Descripcion: Funcion que verifica si es cartas
+;Dominio: Cartas
+;Recorrido: x
+;Recursividad: No
+
+(define(Cartas? L1)
+ (list? L1)
+  )
+
+; ********** Selectores **********
+
+;Descripcion: Funcion que obtiene la primera carta de un mazo/cardsSet
+;Dominio: cardsSet
+;Recorrido: Carta
+;Recursividad: No
+
+(define(firstCard M)
+  (if (Cartas? M)
+      (car M)
+     null)
+  )
+
+;Descripcion: Funcion que obtiene la ultima cara de un mazo
+;Dominio: cardsSet/Mazo
+;Recorrido: Carta
+;Recursividad: No
+
+(define(lastCard M)
+  (if (Cartas? M)
+      (car(reverse M))
+    null)
+  )
+
+;Descripcion: Funcion que obtiene la siguiente carta de un mazo
+;Dominio: cardsSet
+;Recorrido: Carta
+;Recursividad: No
+
+(define(nextCard M)
+  (if (Cartas? M)
+      (car(cdr M))
+      null)
+  )
+
+;Descripcion: Funcion que obtiene las siguientes cartas de un mazo
+;Dominio: cardsSet 
+;Recorrido: Lista de cartas
+;Recursividad: No
+
+(define(nextCards M)
+  (if (Cartas? M)
+      (cdr M)
+     null)
+  )
+
+
+(provide (all-defined-out))

@@ -1,9 +1,11 @@
 #lang racket
 
-; Descripcion:
-; Dominio:
-; Recorrido:
-; Tipo de Recursividad:
+;**************** TDA CardsSet Constructor *****************
+
+; Descripcion: Funcion que crea la primera carta del mazo
+; Dominio: Int
+; Recorrido: Lista de enteros
+; Tipo de Recursividad: Natural
 
 (define(fCard n)
   (define(Fx i n)
@@ -15,10 +17,10 @@
 (define (first n)
   (list(fCard n)))
 
-; Descripcion:
-; Dominio:
-; Recorrido:
-; Tipo de Recursividad:
+; Descripcion: Funcion que crea las primeras n cartas del Mazo/ cardsSet
+; Dominio: Int
+; Recorrido: (Lista de Listas de int) / Primeras n cartas del mazo
+; Tipo de Recursividad: Natural(f1 y f2) y de Cola (nCards n)
 
 (define (nCards n)
   (define (faux j k n i)
@@ -38,10 +40,10 @@
       (cons (+(* j n) k 1) (f2 j (+ k 1) n))
       null))
 
-; Descripcion:
-; Dominio:
-; Recorrido:
-; Tipo de Recursividad:
+; Descripcion: Funcion que crea las restantes n2 cartas del mazo cardsSet
+; Dominio: Int
+; Recorrido: Lista de cartas (Lista de listas de enteros)
+; Tipo de Recursividad: Cola (Fn y funaux), Recursion (f3, f4 y f5)
 
 (define(n2Cards n)
   (define (Fn j k i n aux it)
@@ -71,18 +73,18 @@
        (cons (+(modulo (+(*(- i 1)(- k 1))(- j 1)) n)(+(* n (- k 1))2 n)) (f5 j (+ k 1) i n))
        null))
 
-; Descripcion:
-; Dominio:
-; Recorrido:
-; Tipo de Recursividad:
+; Descripcion: Funcion que une las 3 funciones anteriores para la creacion del mazo
+; Dominio: carta (Lista de elementos) x Lista de cartas x Lista de cartas
+; Recorrido: Lista de cartas
+; Tipo de Recursividad: No
 
 (define(Mazo n)
   (append(first n)(nCards n)(n2Cards n)))
 
-; Descripcion:
-; Dominio:
-; Recorrido:
-; Tipo de Recursividad:
+; Descripcion: Funcion que recorta la cantidad total de cartas dependiendo del i(maxC)dado.
+; Dominio: cardsSet (Lista de cartas) x entero
+; Recorrido: cardsSet actualizado
+; Tipo de Recursividad: Natural
 
 (define(MaxMazo L1 i)
   (if(= i 0)
@@ -90,12 +92,12 @@
      (cons (car L1) (MaxMazo (cdr L1) (- i 1))))
   )
 
-;;;;;;;;;;;;; Elementos Mazo ;;;;;;;;
+;********** Elementos Mazo *************
 
-; Descripcion:
-; Dominio:
-; Recorrido:
-; Tipo de Recursividad:
+; Descripcion: Funcion que intercambia los elementos dependiendo del numero que poose la carta
+; Dominio: cardsSet x Lista de elementos
+; Recorrido: cardsSet actualizado 
+; Tipo de Recursividad: Natural
 
 (define(Elem Mazo Elementos)
   (if(empty? Mazo)
@@ -103,20 +105,20 @@
      (cons (Intercambiar (car Mazo) Elementos) (Elem (cdr Mazo) Elementos) ))
   )
 
-; Descripcion:
-; Dominio:
-; Recorrido:
-; Tipo de Recursividad:
+; Descripcion: Funcion que intercambia el elemento dentro de la carta
+; Dominio: Carta x Lista de elementos 
+; Recorrido: Carta actualizada
+; Tipo de Recursividad: Natural
 
 (define(Intercambiar Carta Elementos)
   (if(empty? Carta)
      null
      (cons (BuscarElem Elementos (car Carta)) (Intercambiar (cdr Carta) Elementos) ))
 )
-; Descripcion:
-; Dominio:
-; Recorrido:
-; Tipo de Recursividad:
+; Descripcion: Funcion que busca el elemento para su posterior uso actualizando la carta
+; Dominio: Lista de elementos x Int
+; Recorrido: Elemento ( un string / depende de la lista dada)
+; Tipo de Recursividad: Natural
 
  (define(BuscarElem Elementos n)
    (define(Faux Elementos n i)
@@ -130,5 +132,4 @@
    (Faux Elementos (- n 1) 0)
    )
 
-(define F1(Mazo 5))
 (provide (all-defined-out))
