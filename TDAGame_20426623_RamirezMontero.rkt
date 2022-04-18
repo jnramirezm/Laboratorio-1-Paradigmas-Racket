@@ -308,3 +308,64 @@
 
 ; ******************************* EJEMPLOS ***************************************
 
+; CONSTRUCTOR
+
+(define Game1 (game 4 (cardsSet LElementos 4 0 rndFn)stackMode null))
+(define Game01 (game 3 (cardsSet LElementos 3 0 rndFn)stackMode null))
+(define Game001 (game 5 (cardsSet LElementos 6 20 rndFn)stackMode null))
+(define Game0001 (game 5 (cardsSet LElementos 5 15 rndFn)stackMode null))
+
+; REGISTER
+
+(define Game2 (register Game1 "Tonito"))
+(define Game02 (register Game2 "Tobi"))
+(define Game002 (register Game02 "Copito"))
+(define Game0002 (register Game002 "Tonito"))   ; No agrega repetido
+(define Game00002 (register Game0002 "Benito"))
+(define Game000002 (register Game00002 "Bobi")) ; No supera el maximo de la partida
+
+; WHOSETURNISIT?
+
+(define Game3 (whoseTurnIsIt? Game00002))
+(define Game03 (whoseTurnIsIt? '(4(("A" "B" "C" "D")("A" "E" "F" "G")("A" "H" "I" "J")("A" "K" "L" "M")("B" "E" "H" "K")("B" "F" "I" "L")("B" "G" "J" "M")("C" "E" "I" "M")("C" "F" "J" "K")("C" "G" "H" "L")("D" "E" "J" "L")
+   ("D" "F" "H" "M")
+   ("D" "G" "I" "K"))
+  "mode"
+  (("Tonito" () 1 0) ("Tobi" () 0 0) ("Copito" () 0 0) ("Benito" () 0 0))
+  ()
+  0
+  "")))
+(define Game003 (whoseTurnIsIt? '(4(("A" "B" "C" "D")("A" "E" "F" "G")("A" "H" "I" "J")("A" "K" "L" "M")("B" "E" "H" "K")("B" "F" "I" "L")("B" "G" "J" "M")("C" "E" "I" "M")
+   ("C" "F" "J" "K")
+   ("C" "G" "H" "L")
+   ("D" "E" "J" "L")
+   ("D" "F" "H" "M")
+   ("D" "G" "I" "K"))
+  "mode"
+  (("Tonito" () 1 0) ("Tobi" () 1 0) ("Copito" () 0 0) ("Benito" () 0 0))
+  ()
+  0
+  "")))
+
+; PLAY
+
+(define Game4 (play Game00002 null null))            ; StackMode
+(define Game04 (play Game4 pass null))               ; pass
+(define Game004 (play Game04 null rndFn))             ; StackMode
+(define Game0004 (play Game004 (spotIt "A") null))   
+(define Game00004 (play Game0004 (spotIt "I")null))  
+(define Game000004 (play Game00004 finish null))     ; finish
+
+; STATUS
+
+(define Game5 (status Game4))
+(define Game05 (status Game04))
+(define Game005 (status Game000004))
+
+; SCORE
+
+(define Game6 (score Game00004 "Tonito"))
+(define Game06 (score Game00004 "Tobi"))
+(define Game006 (score Game00004 "Copito"))
+
+; GAME->STRING

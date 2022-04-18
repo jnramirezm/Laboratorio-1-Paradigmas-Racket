@@ -202,4 +202,67 @@
   (if(dobble? (cons card mazo))
      (append mazo (list card))
      mazo)))
-  
+
+;********************************* Ejemplos ***********************************
+
+;  CARDSSET
+
+(define DobbleSet1 (cardsSet LElementos 4 0 rndFn))
+(define DobbleSet01 (cardsSet LElementos 3 0 rndFn))
+(define DobbleSet001 (cardsSet LElementos 4 9 rndFn))
+(define DobbleSet0001 (cardsSet LElementos 5 0 rndFn))
+
+;  DOBBLE?
+
+(define DobbleSet2 (dobble? DobbleSet1))
+(define DobbleSet02 (dobble? DobbleSet01))
+(define DobbleSet002 (dobble? DobbleSet001))
+(define DobbleSet0002 (dobble? DobbleSet0001))
+
+; NUMCARDS
+
+(define DobbleSet3 (numCards DobbleSet1))
+(define DobbleSet03 (numCards DobbleSet01))
+(define DobbleSet003 (numCards DobbleSet001))
+(define DobbleSet0003 (numCards DobbleSet0001))
+
+; NTHCARDS
+
+(define DobbleSet4 (nthCard DobbleSet1 5))
+(define DobbleSet04 (nthCard DobbleSet01 5))
+(define DobbleSet004 (nthCard DobbleSet001 10))
+(define DobbleSet0004 (nthCard DobbleSet0001 5))
+
+; FIND TOTAL CARDS
+
+(define DobbleSet5 (findTotalCards DobbleSet4))
+(define DobbleSet05 (findTotalCards DobbleSet04))
+(define DobbleSet005 (findTotalCards DobbleSet004))
+(define DobbleSet0005 (findTotalCards DobbleSet0004))
+
+; REQUIRED ELEMENTS
+
+(define DobbleSet6 (requiredElements DobbleSet4))
+(define DobbleSet06 (requiredElements DobbleSet04))
+(define DobbleSet006 (requiredElements DobbleSet004))
+(define DobbleSet0006 (requiredElements DobbleSet0004))
+
+; MISSING CARDS
+
+(define DobbleSet7 (missingCards DobbleSet1))
+(define DobbleSet07 (missingCards DobbleSet01))
+(define DobbleSet007 (missingCards DobbleSet001))
+(define DobbleSet0007 (missingCards DobbleSet0001))
+
+; CARDSSET-> STRING
+
+(define DobbleSet8 (cardsSet->string DobbleSet1))
+(define DobbleSet08 (cardsSet->string DobbleSet01))
+(define DobbleSet008 (cardsSet->string DobbleSet001))
+(define DobbleSet0008 (cardsSet->string DobbleSet0001))
+
+; ADDCARD
+(define DobbleSet9 (cardsSet LElementos 3 3 rndFn))
+(define DobbleSet09 (addCard DobbleSet9 (card "A" "B" "C")))
+(define DobbleSet009 (addCard DobbleSet09 (card "B" "E" "G")))
+(define DobbleSet0009 (addCard DobbleSet009 (card "G" "F" "E"))) ; Tiene 2 elementos en comun
