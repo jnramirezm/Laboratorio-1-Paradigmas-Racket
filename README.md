@@ -1,4 +1,4 @@
-# lab1_20426623_RamirezMontero
+# Laboratorio 1 Paradigmas 
 
 Juan Ramirez.
 
